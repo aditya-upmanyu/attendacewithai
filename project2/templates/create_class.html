@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Class - Smart Attendance System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateX(-5px);
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .error-box {
+            background: #fee;
+            color: #c33;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #c33;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 3px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #999;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #999;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #e1e8ed;
+            color: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #d1d8dd;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-title {
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-list {
+            color: #3b82f6;
+            font-size: 14px;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 5px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .icon-large {
+                font-size: 60px;
+            }
+        }
+
+        /* Character Counter */
+        .char-counter {
+            text-align: right;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .char-counter.warning {
+            color: #f59e0b;
+        }
+
+        .char-counter.danger {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="/dashboard" class="back-button">
+            ← Back to Dashboard
+        </a>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <!-- Header -->
+            <div class="header-section">
+                <div class="icon-large">🏫</div>
+                <h1>Create New Class</h1>
+                <p class="subtitle">Set up a new class for attendance tracking</p>
+            </div>
+
+            <!-- Error Message -->
+            {% if error %}
+            <div class="error-box">
+                <span style="font-size: 20px;">⚠️</span>
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <div class="info-title">
+                    💡 Quick Guide
+                </div>
+                <ul class="info-list">
+                    <li>Class ID must be unique (e.g., CSE101, BCA3A)</li>
+                    <li>You can add students after creating the class</li>
+                    <li>AI-powered attendance will be available instantly</li>
+                </ul>
+            </div>
+
+            <!-- Form -->
+            <form method="POST" action="/create-class" id="createClassForm">
+                <!-- Class ID -->
+                <div class="form-group">
+                    <label for="class_id">
+                        🆔 Class ID <span class="required">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🆔</span>
+                        <input 
+                            type="text" 
+                            id="class_id" 
+                            name="class_id" 
+                            placeholder="e.g., CSE101, BCA3A"
+                            required
+                            maxlength="20"
+                            pattern="[A-Za-z0-9_-]+"
+                            title="Only letters, numbers, dash and underscore allowed"
+                        >
+                    </div>
+                    <div class="help-text">
+                        ℹ️ Use alphanumeric characters only (no spaces)
+                    </div>
+                    <div class="char-counter" id="classIdCounter">0/20</div>
+                </div>
+
+                <!-- Class Name -->
+                <div class="form-group">
+                    <label for="class_name">
+                        📚 Class Name <span class="required">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📚</span>
+                        <input 
+                            type="text" 
+                            id="class_name" 
+                            name="class_name" 
+                            placeholder="e.g., Data Structures, Web Development"
+                            required
+                            maxlength="100"
+                        >
+                    </div>
+                    <div class="help-text">
+                        ℹ️ Full name of the class/subject
+                    </div>
+                    <div class="char-counter" id="classNameCounter">0/100</div>
+                </div>
+
+                <!-- Department & Semester -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="department">
+                            🏛️ Department
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🏛️</span>
+                            <select id="department" name="department">
+                                <option value="CSE">Computer Science</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="BCA">BCA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="ECE">Electronics</option>
+                                <option value="EEE">Electrical</option>
+                                <option value="ME">Mechanical</option>
+                                <option value="CE">Civil</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="semester">
+                            📖 Semester
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📖</span>
+                            <select id="semester" name="semester">
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                                <option value="N/A">Not Applicable</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/dashboard'">
+                        ❌ Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        ✅ Create Class
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p style="color: #667eea; font-weight: 600;">Creating class...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('createClassForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
+        const classIdInput = document.getElementById('class_id');
+        const classNameInput = document.getElementById('class_name');
+
+        // Character counters
+        classIdInput.addEventListener('input', function() {
+            const counter = document.getElementById('classIdCounter');
+            const length = this.value.length;
+            counter.textContent = `${length}/20`;
+            
+            if (length > 15) {
+                counter.classList.add('warning');
+            } else {
+                counter.classList.remove('warning');
+            }
+            
+            if (length >= 20) {
+                counter.classList.add('danger');
+            } else {
+                counter.classList.remove('danger');
+            }
+        });
+
+        classNameInput.addEventListener('input', function() {
+            const counter = document.getElementById('classNameCounter');
+            const length = this.value.length;
+            counter.textContent = `${length}/100`;
+            
+            if (length > 80) {
+                counter.classList.add('warning');
+            } else {
+                counter.classList.remove('warning');
+            }
+            
+            if (length >= 100) {
+                counter.classList.add('danger');
+            } else {
+                counter.classList.remove('danger');
+            }
+        });
+
+        // Auto-generate Class ID from Class Name
+        classNameInput.addEventListener('blur', function() {
+            if (!classIdInput.value) {
+                const name = this.value.trim();
+                const suggested = name
+                    .split(' ')
+                    .map(word => word.substring(0, 3).toUpperCase())
+                    .join('')
+                    .substring(0, 10);
+                
+                if (suggested) {
+                    classIdInput.value = suggested;
+                    classIdInput.dispatchEvent(new Event('input'));
+                }
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate
+            if (!classIdInput.value.trim() || !classNameInput.value.trim()) {
+                alert('⚠️ Please fill all required fields!');
+                return;
+            }
+
+            // Show loading
+            submitBtn.disabled = true;
+            form.style.display = 'none';
+            loading.style.display = 'block';
+
+            // Submit form
+            setTimeout(() => {
+                this.submit();
+            }, 500);
+        });
+
+        // Auto-uppercase class ID
+        classIdInput.addEventListener('input', function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        // Prevent double submission
+        let submitted = false;
+        form.addEventListener('submit', function(e) {
+            if (submitted) {
+                e.preventDefault();
+                return false;
+            }
+            submitted = true;
+        });
+    </script>
+</body>
+</html>

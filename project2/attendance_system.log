@@ -1,0 +1,193 @@
+2026-01-10 16:41:19,181 - INFO - [_internal.py:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2026-01-10 16:41:19,182 - INFO - [_internal.py:97] - [33mPress CTRL+C to quit[0m
+2026-01-10 16:41:19,183 - INFO - [_internal.py:97] -  * Restarting with stat
+2026-01-10 16:41:20,418 - WARNING - [_internal.py:97] -  * Debugger is active!
+2026-01-10 16:41:20,421 - INFO - [_internal.py:97] -  * Debugger PIN: 861-226-008
+2026-01-10 16:44:21,913 - INFO - [_internal.py:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2026-01-10 16:44:21,914 - INFO - [_internal.py:97] - [33mPress CTRL+C to quit[0m
+2026-01-10 16:44:21,915 - INFO - [_internal.py:97] -  * Restarting with stat
+2026-01-10 16:44:23,235 - WARNING - [_internal.py:97] -  * Debugger is active!
+2026-01-10 16:44:23,238 - INFO - [_internal.py:97] -  * Debugger PIN: 861-226-008
+2026-01-10 16:44:28,439 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:28] "[32mGET / HTTP/1.1[0m" 302 -
+2026-01-10 16:44:31,158 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:31] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:44:32,908 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:44:32,910 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:32] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:44:34,972 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:34] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-01-10 16:44:35,263 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:35] "GET /login HTTP/1.1" 200 -
+2026-01-10 16:44:35,426 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:44:35,428 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:35] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:44:41,241 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:41] "POST /login HTTP/1.1" 200 -
+2026-01-10 16:44:41,409 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:44:41,410 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:41] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:44:47,800 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-01-10 16:44:49,037 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:49] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:44:49,204 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:44:49,206 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:49] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:44:52,424 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:52] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:44:53,757 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:53] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:44:53,936 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:44:53,938 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:44:53] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:45:00,116 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:00] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:45:01,324 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:01] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:45:01,541 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:45:01,542 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:01] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:45:04,945 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:04] "GET /create-class HTTP/1.1" 200 -
+2026-01-10 16:45:05,166 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:45:05,168 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:05] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:45:07,887 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:07] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:45:08,032 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:45:08,033 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:08] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:45:36,266 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:36] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:45:37,292 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:37] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:45:38,812 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:45:38,814 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:45:38] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:05,093 - INFO - [_internal.py:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.9:5000
+2026-01-10 16:50:05,093 - INFO - [_internal.py:97] - [33mPress CTRL+C to quit[0m
+2026-01-10 16:50:05,095 - INFO - [_internal.py:97] -  * Restarting with stat
+2026-01-10 16:50:06,488 - WARNING - [_internal.py:97] -  * Debugger is active!
+2026-01-10 16:50:06,491 - INFO - [_internal.py:97] -  * Debugger PIN: 861-226-008
+2026-01-10 16:50:09,742 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:09] "[32mGET / HTTP/1.1[0m" 302 -
+2026-01-10 16:50:12,475 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:12] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:13,874 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:13,875 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:13] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:15,826 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:15] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:50:17,033 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:17] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:17,211 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:17,213 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:17] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:20,330 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:20] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:50:21,557 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:21] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:21,712 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:21,714 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:21] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:24,748 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:24] "GET /class/2SC_1/attendance HTTP/1.1" 200 -
+2026-01-10 16:50:24,966 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:24,968 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:24] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:25,563 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:25] "[35m[1mGET /api/attendance/status/2SC_1 HTTP/1.1[0m" 500 -
+2026-01-10 16:50:29,938 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:29] "[31m[1mPOST /api/attendance/start/2SC_1 HTTP/1.1[0m" 400 -
+2026-01-10 16:50:31,771 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:31] "[35m[1mGET /api/attendance/status/2SC_1 HTTP/1.1[0m" 500 -
+2026-01-10 16:50:33,351 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:33,353 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:33] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:35,754 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:35] "[32mGET /class/2SC_1 HTTP/1.1[0m" 302 -
+2026-01-10 16:50:36,908 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:36] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:37,072 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:37,073 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:37] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:41,277 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:41] "GET /class/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:50:41,913 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:41] "GET /class/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:50:42,311 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:42] "GET /class/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:50:42,508 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:42,509 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:42] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:51,037 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:51] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:51,221 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:51,222 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:51] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:50:55,638 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:55] "POST /api/class/2SC_1/delete HTTP/1.1" 200 -
+2026-01-10 16:50:58,039 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:58] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:50:58,245 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:50:58,247 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:50:58] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:02,392 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:02] "GET /class/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:02,573 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:51:02,575 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:02] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:06,234 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:06] "GET /class/2SC_2/register HTTP/1.1" 200 -
+2026-01-10 16:51:06,386 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:51:06,387 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:06] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:30,370 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:30] "POST /api/student/register HTTP/1.1" 200 -
+2026-01-10 16:51:33,520 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:33] "GET /class/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:33,769 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:51:33,771 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:33] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:45,521 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:45] "GET /dashboard HTTP/1.1" 200 -
+2026-01-10 16:51:45,700 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:51:45,701 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:45] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:48,170 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:48] "GET /class/2SC_2/attendance HTTP/1.1" 200 -
+2026-01-10 16:51:48,397 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-10 16:51:48,398 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:48] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-10 16:51:49,129 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:49] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:51,611 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:51] "POST /api/attendance/start/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:54,149 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:54] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:55,441 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:55] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:51:56,397 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:56] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:51:57,061 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:57] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:51:58,998 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:58] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:51:59,155 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:51:59] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:01,310 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:01] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:52:02,090 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:02] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:03,002 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:03] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:52:04,175 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:04] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:05,554 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:05] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:52:06,324 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:06] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:07,037 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:07] "POST /api/attendance/process-frame HTTP/1.1" 200 -
+2026-01-10 16:52:09,195 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:09] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:14,425 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:14] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:19,222 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:19] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:24,353 - INFO - [_internal.py:97] - 127.0.0.1 - - [10/Jan/2026 16:52:24] "GET /api/attendance/status/2SC_2 HTTP/1.1" 200 -
+2026-01-10 16:52:24,611 - INFO - [_internal.py:97] -  * Detected change in 'C:\\Users\\adity\\OneDrive\\Desktop\\MyProjects\\DEV And HACKATHONS\\project2\\app.py', reloading
+2026-01-10 16:52:24,887 - INFO - [_internal.py:97] -  * Restarting with stat
+2026-01-10 16:52:26,530 - WARNING - [_internal.py:97] -  * Debugger is active!
+2026-01-10 16:52:26,536 - INFO - [_internal.py:97] -  * Debugger PIN: 861-226-008
+2026-01-13 10:35:32,847 - INFO - [_internal.py:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.222.227:5000
+2026-01-13 10:35:32,848 - INFO - [_internal.py:97] - [33mPress CTRL+C to quit[0m
+2026-01-13 10:35:32,851 - INFO - [_internal.py:97] -  * Restarting with stat
+2026-01-13 10:35:34,354 - WARNING - [_internal.py:97] -  * Debugger is active!
+2026-01-13 10:35:34,362 - INFO - [_internal.py:97] -  * Debugger PIN: 861-226-008
+2026-01-13 10:35:39,184 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:39] "[32mGET / HTTP/1.1[0m" 302 -
+2026-01-13 10:35:39,225 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:39] "GET /login HTTP/1.1" 200 -
+2026-01-13 10:35:40,339 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-13 10:35:40,340 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:40] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-13 10:35:40,343 - WARNING - [app.py:1045] - 404 error: /favicon.ico
+2026-01-13 10:35:40,344 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:40] "[32mGET /favicon.ico HTTP/1.1[0m" 302 -
+2026-01-13 10:35:40,662 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:40] "GET /login HTTP/1.1" 200 -
+2026-01-13 10:35:56,660 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-01-13 10:35:57,175 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:35:57,487 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:35:57,845 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:35:58,585 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:58] "GET /dashboard HTTP/1.1" 200 -
+2026-01-13 10:35:58,771 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-13 10:35:58,772 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:58] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-13 10:35:59,100 - WARNING - [app.py:1045] - 404 error: /favicon.ico
+2026-01-13 10:35:59,102 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:35:59] "[32mGET /favicon.ico HTTP/1.1[0m" 302 -
+2026-01-13 10:35:59,715 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:00,041 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:00,355 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:00,733 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:36:00] "GET /dashboard HTTP/1.1" 200 -
+2026-01-13 10:36:52,734 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:36:52] "GET /create-class HTTP/1.1" 200 -
+2026-01-13 10:36:52,979 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-13 10:36:52,980 - WARNING - [app.py:1045] - 404 error: /favicon.ico
+2026-01-13 10:36:52,980 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:36:52] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-13 10:36:52,981 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:36:52] "[32mGET /favicon.ico HTTP/1.1[0m" 302 -
+2026-01-13 10:36:53,403 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:53,748 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:54,051 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:36:54,562 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:36:54] "GET /dashboard HTTP/1.1" 200 -
+2026-01-13 10:37:15,416 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:15,824 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:16,243 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:16,692 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:16] "POST /create-class HTTP/1.1" 200 -
+2026-01-13 10:37:16,823 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-13 10:37:16,824 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:16] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-13 10:37:16,832 - WARNING - [app.py:1045] - 404 error: /favicon.ico
+2026-01-13 10:37:16,833 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:16] "[32mGET /favicon.ico HTTP/1.1[0m" 302 -
+2026-01-13 10:37:17,463 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:18,097 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:18,530 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:18,956 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:18] "GET /dashboard HTTP/1.1" 200 -
+2026-01-13 10:37:26,063 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:26,489 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:26,905 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:27,329 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:27] "GET /dashboard HTTP/1.1" 200 -
+2026-01-13 10:37:27,447 - WARNING - [app.py:1045] - 404 error: /check
+2026-01-13 10:37:27,448 - WARNING - [app.py:1045] - 404 error: /favicon.ico
+2026-01-13 10:37:27,448 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:27] "[32mOPTIONS /check HTTP/1.1[0m" 302 -
+2026-01-13 10:37:27,449 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:27] "[32mGET /favicon.ico HTTP/1.1[0m" 302 -
+2026-01-13 10:37:28,006 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:28,380 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:28,739 - WARNING - [connectionpool.py:868] - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'oauth2.googleapis.com'. (_ssl.c:1032)"))': /token
+2026-01-13 10:37:29,483 - INFO - [_internal.py:97] - 127.0.0.1 - - [13/Jan/2026 10:37:29] "GET /dashboard HTTP/1.1" 200 -

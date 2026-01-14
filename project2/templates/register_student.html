@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Student - {{ class_name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateX(-5px);
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .form-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .form-body {
+            padding: 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 6px;
+        }
+
+        /* Camera Section */
+        .camera-container {
+            background: #f8f9fa;
+            border: 3px dashed #e1e8ed;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .camera-preview {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: #000;
+            border-radius: 12px;
+            margin: 0 auto 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .camera-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .camera-placeholder-icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .captured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .camera-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-camera {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-start {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-start:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-capture {
+            background: #3b82f6;
+            color: white;
+            display: none;
+        }
+
+        .btn-capture:hover {
+            background: #2563eb;
+        }
+
+        .btn-retake {
+            background: #f59e0b;
+            color: white;
+            display: none;
+        }
+
+        .btn-retake:hover {
+            background: #d97706;
+        }
+
+        .camera-status {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .status-indicator.active {
+            background: #10b981;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .camera-tips {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .tips-title {
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .tips-list {
+            font-size: 12px;
+            color: #3b82f6;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        /* Submit Section */
+        .submit-section {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert.show {
+            display: flex;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .loading-subtext {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-body {
+                padding: 25px;
+            }
+
+            .camera-preview {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="/class/{{ class_id }}" class="back-button">
+            ← Back to Class
+        </a>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <!-- Header -->
+            <div class="form-header">
+                <div class="header-icon">👨‍🎓</div>
+                <h1>Register New Student</h1>
+                <p>{{ class_name }} - Add student with facial recognition</p>
+            </div>
+
+            <!-- Body -->
+            <div class="form-body">
+                <!-- Alert Messages -->
+                <div id="alertBox" class="alert"></div>
+
+                <form id="registerForm">
+                    <div class="form-grid">
+                        <!-- Left Section: Student Info -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                📝 Student Information
+                            </div>
+
+                            <div class="form-group">
+                                <label for="student_id">
+                                    Student ID <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="student_id" 
+                                    name="student_id" 
+                                    placeholder="e.g., 21001234"
+                                    required
+                                    maxlength="20"
+                                >
+                                <div class="help-text">Unique student identifier</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">
+                                    Full Name <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    placeholder="e.g., John Doe"
+                                    required
+                                    maxlength="100"
+                                >
+                                <div class="help-text">Student's complete name</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="roll_no">
+                                    Roll Number <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="roll_no" 
+                                    name="roll_no" 
+                                    placeholder="e.g., CSE21001"
+                                    required
+                                    maxlength="20"
+                                >
+                                <div class="help-text">Class roll number</div>
+                            </div>
+                        </div>
+
+                        <!-- Right Section: Camera -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                📸 Capture Photo
+                            </div>
+
+                            <div class="camera-container">
+                                <div class="camera-preview">
+                                    <div class="camera-placeholder" id="placeholder">
+                                        <div class="camera-placeholder-icon">📷</div>
+                                        <div>Click "Start Camera" to begin</div>
+                                    </div>
+                                    <video id="video" autoplay playsinline></video>
+                                    <img id="capturedImage" class="captured-image" alt="Captured">
+                                </div>
+                                <canvas id="canvas"></canvas>
+
+                                <div class="camera-buttons">
+                                    <button type="button" class="btn-camera btn-start" id="startBtn">
+                                        📷 Start Camera
+                                    </button>
+                                    <button type="button" class="btn-camera btn-capture" id="captureBtn">
+                                        📸 Capture Photo
+                                    </button>
+                                    <button type="button" class="btn-camera btn-retake" id="retakeBtn">
+                                        🔄 Retake
+                                    </button>
+                                </div>
+
+                                <div class="camera-status">
+                                    <span class="status-indicator" id="statusIndicator"></span>
+                                    <span id="statusText">Camera Off</span>
+                                </div>
+
+                                <div class="camera-tips">
+                                    <div class="tips-title">📋 Tips for Best Results:</div>
+                                    <ul class="tips-list">
+                                        <li>Ensure good lighting on your face</li>
+                                        <li>Look directly at the camera</li>
+                                        <li>Remove glasses if possible</li>
+                                        <li>Keep a neutral expression</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Section -->
+                        <div class="submit-section">
+                            <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                                ✅ Register Student
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">Processing...</div>
+            <div class="loading-subtext">Registering student with facial recognition</div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const capturedImage = document.getElementById('capturedImage');
+        const placeholder = document.getElementById('placeholder');
+        const startBtn = document.getElementById('startBtn');
+        const captureBtn = document.getElementById('captureBtn');
+        const retakeBtn = document.getElementById('retakeBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        const registerForm = document.getElementById('registerForm');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        let stream = null;
+        let imageData = null;
+
+        // Show alert
+        function showAlert(message, type) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.className = `alert alert-${type} show`;
+            alertBox.innerHTML = `
+                <span style="font-size: 20px;">${type === 'success' ? '✅' : type === 'error' ? '❌' : '⚠️'}</span>
+                <span>${message}</span>
+            `;
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Start Camera
+        startBtn.addEventListener('click', async () => {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'user',
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                video.srcObject = stream;
+                placeholder.style.display = 'none';
+                video.style.display = 'block';
+                
+                startBtn.style.display = 'none';
+                captureBtn.style.display = 'inline-flex';
+                
+                statusIndicator.classList.add('active');
+                statusText.textContent = 'Camera Active';
+                
+                showAlert('Camera started successfully!', 'success');
+            } catch (error) {
+                console.error('Camera error:', error);
+                showAlert('Failed to access camera. Please check permissions.', 'error');
+            }
+        });
+
+        // Capture Photo
+        captureBtn.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            imageData = canvas.toDataURL('image/jpeg', 0.9);
+            
+            capturedImage.src = imageData;
+            capturedImage.style.display = 'block';
+            video.style.display = 'none';
+            
+            captureBtn.style.display = 'none';
+            retakeBtn.style.display = 'inline-flex';
+            
+            // Stop camera
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            
+            statusIndicator.classList.remove('active');
+            statusText.textContent = 'Photo Captured';
+            
+            submitBtn.disabled = false;
+            showAlert('Photo captured! Fill the form and submit.', 'success');
+        });
+
+        // Retake Photo
+        retakeBtn.addEventListener('click', () => {
+            capturedImage.style.display = 'none';
+            placeholder.style.display = 'flex';
+            
+            retakeBtn.style.display = 'none';
+            startBtn.style.display = 'inline-flex';
+            
+            imageData = null;
+            submitBtn.disabled = true;
+            
+            statusText.textContent = 'Camera Off';
+        });
+
+        // Form Submission
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validate
+            const studentId = document.getElementById('student_id').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const rollNo = document.getElementById('roll_no').value.trim();
+
+            if (!studentId || !name || !rollNo) {
+                showAlert('Please fill all required fields!', 'error');
+                return;
+            }
+
+            if (!imageData) {
+                showAlert('Please capture a photo first!', 'error');
+                return;
+            }
+
+            // Show loading
+            loadingOverlay.classList.add('show');
+
+            try {
+                const response = await fetch('/api/student/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        class_id: '{{ class_id }}',
+                        student_id: studentId,
+                        name: name,
+                        roll_no: rollNo,
+                        image_data: imageData
+                    })
+                });
+
+                const data = await response.json();
+
+                loadingOverlay.classList.remove('show');
+
+                if (data.success) {
+                    showAlert('✅ Student registered successfully!', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/class/{{ class_id }}';
+                    }, 2000);
+                } else {
+                    showAlert('❌ ' + data.error, 'error');
+                }
+            } catch (error) {
+                loadingOverlay.classList.remove('show');
+                showAlert('❌ Error: ' + error.message, 'error');
+            }
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>

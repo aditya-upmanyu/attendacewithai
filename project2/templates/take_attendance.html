@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Attendance - {{ class_name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Camera Section */
+        .camera-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .camera-container {
+            position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        #video {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: none;
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .camera-placeholder {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .placeholder-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .placeholder-text {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Detection Overlay */
+        .detection-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .detection-overlay.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detection-text {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .detection-subtext {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Camera Controls */
+        .camera-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-start {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-start:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-stop {
+            background: #ef4444;
+            color: white;
+            display: none;
+        }
+
+        .btn-stop:hover {
+            background: #dc2626;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .stats-grid {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .stat-box.green {
+            border-left-color: #10b981;
+        }
+
+        .stat-box.red {
+            border-left-color: #ef4444;
+        }
+
+        .stat-box.blue {
+            border-left-color: #3b82f6;
+        }
+
+        /* Manual Marking */
+        .manual-section {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .manual-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .student-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .btn-manual {
+            width: 100%;
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-manual:hover {
+            background: #2563eb;
+        }
+
+        /* Lists Section */
+        .lists-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .student-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .student-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .student-item:hover {
+            background: #e1e8ed;
+        }
+
+        .student-item.present {
+            border-left-color: #10b981;
+            background: #d1fae5;
+        }
+
+        .student-item.absent {
+            border-left-color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .student-info-item {
+            flex: 1;
+        }
+
+        .student-name-item {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .student-roll-item {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .student-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-present {
+            background: #10b981;
+            color: white;
+        }
+
+        .badge-absent {
+            background: #ef4444;
+            color: white;
+        }
+
+        .badge-camera {
+            background: #3b82f6;
+            color: white;
+            margin-left: 8px;
+        }
+
+        .empty-list {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .status-dot.active {
+            background: #10b981;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-panel {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            #video,
+            .camera-placeholder {
+                height: 400px;
+            }
+
+            .camera-section {
+                padding: 20px;
+            }
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            min-width: 300px;
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .notification-icon {
+            font-size: 32px;
+        }
+
+        .notification-title {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .notification-body {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <h1>📸 Take Attendance</h1>
+                <div class="header-subtitle">{{ class_name }} - AI Facial Recognition</div>
+            </div>
+            <a href="/class/{{ class_id }}" class="btn-back">← Back to Class</a>
+        </div>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-indicator">
+                <div class="status-dot" id="statusDot"></div>
+                <span class="status-text" id="statusText">Camera Off</span>
+            </div>
+            <div>
+                <span style="color: #666; font-size: 14px;">Processing: <strong id="processingCount">0</strong> students</span>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Camera Section -->
+            <div class="camera-section">
+                <h2 class="section-title">📹 Live Camera Feed</h2>
+                
+                <div class="camera-container">
+                    <div class="camera-placeholder" id="placeholder">
+                        <div class="placeholder-icon">📷</div>
+                        <div class="placeholder-text">Click "Start Camera" to begin</div>
+                    </div>
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas"></canvas>
+                    
+                    <!-- Detection Overlay -->
+                    <div class="detection-overlay" id="detectionOverlay">
+                        <div class="detection-text" id="detectionText">Scanning...</div>
+                        <div class="detection-subtext" id="detectionSubtext">Looking for faces...</div>
+                    </div>
+                </div>
+
+                <div class="camera-controls">
+                    <button class="btn btn-start" id="startBtn">
+                        🎥 Start Camera
+                    </button>
+                    <button class="btn btn-stop" id="stopBtn">
+                        ⏹️ Stop Camera
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Panel -->
+            <div class="stats-panel">
+                <h3 class="section-title">📊 Live Statistics</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-label">Total Students</div>
+                        <div class="stat-value" id="totalCount">{{ total_students }}</div>
+                    </div>
+
+                    <div class="stat-box green">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-label">Present</div>
+                        <div class="stat-value" id="presentCount">{{ present_count }}</div>
+                    </div>
+
+                    <div class="stat-box red">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-label">Absent</div>
+                        <div class="stat-value" id="absentCount">{{ total_students - present_count }}</div>
+                    </div>
+
+                    <div class="stat-box blue">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-label">Attendance Rate</div>
+                        <div class="stat-value" id="rateValue">
+                            {% if total_students > 0 %}
+                                {{ ((present_count / total_students) * 100)|round(0)|int }}%
+                            {% else %}
+                                0%
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Marking -->
+                <div class="manual-section">
+                    <div class="manual-title">📝 Manual Marking</div>
+                    <select class="student-select" id="manualSelect">
+                        <option value="">Select a student...</option>
+                    </select>
+                    <button class="btn btn-manual" id="manualMarkBtn">
+                        ✅ Mark as Present
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lists Section -->
+        <div class="lists-section">
+            <h2 class="section-title">📋 Attendance Lists</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('all')">
+                    All Students ({{ total_students }})
+                </button>
+                <button class="tab" onclick="switchTab('present')">
+                    Present (<span id="presentTabCount">{{ present_count }}</span>)
+                </button>
+                <button class="tab" onclick="switchTab('absent')">
+                    Absent (<span id="absentTabCount">{{ total_students - present_count }}</span>)
+                </button>
+            </div>
+
+            <!-- All Students Tab -->
+            <div class="tab-content active" id="allTab">
+                <div class="student-list" id="allList">
+                    <div class="empty-list">
+                        <div class="empty-icon">⏳</div>
+                        <div>Loading students...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Present Tab -->
+            <div class="tab-content" id="presentTab">
+                <div class="student-list" id="presentList">
+                    <div class="empty-list">
+                        <div class="empty-icon">✅</div>
+                        <div>No students marked present yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Absent Tab -->
+            <div class="tab-content" id="absentTab">
+                <div class="student-list" id="absentList">
+                    <div class="empty-list">
+                        <div class="empty-icon">❌</div>
+                        <div>All students are present!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-header">
+            <div class="notification-icon" id="notifIcon">✅</div>
+            <div class="notification-title" id="notifTitle">Success</div>
+        </div>
+        <div class="notification-body" id="notifBody">Message</div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const placeholder = document.getElementById('placeholder');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+        const detectionOverlay = document.getElementById('detectionOverlay');
+        const detectionText = document.getElementById('detectionText');
+        const detectionSubtext = document.getElementById('detectionSubtext');
+        const manualSelect = document.getElementById('manualSelect');
+        const manualMarkBtn = document.getElementById('manualMarkBtn');
+
+        const classId = '{{ class_id }}';
+        let stream = null;
+        let isProcessing = false;
+        let processingInterval = null;
+        let allStudents = [];
+
+        // Show notification
+        function showNotification(title, body, icon = '✅') {
+            const notif = document.getElementById('notification');
+            document.getElementById('notifIcon').textContent = icon;
+            document.getElementById('notifTitle').textContent = title;
+            document.getElementById('notifBody').textContent = body;
+            notif.classList.add('show');
+            
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 4000);
+        }
+
+        // Load attendance status
+        async function loadAttendanceStatus() {
+            try {
+                const response = await fetch(`/api/attendance/status/${classId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update stats
+                    document.getElementById('presentCount').textContent = data.present_count;
+                    document.getElementById('absentCount').textContent = data.absent_count;
+                    document.getElementById('rateValue').textContent = data.attendance_rate;
+                    document.getElementById('presentTabCount').textContent = data.present_count;
+                    document.getElementById('absentTabCount').textContent = data.absent_count;
+
+                    // Update lists
+                    updateLists(data.present, data.absent);
+                    
+                    // Store all students
+                    allStudents = [...data.present, ...data.absent];
+                    
+                    // Populate manual select
+                    manualSelect.innerHTML = '<option value="">Select a student...</option>';
+                    data.absent.forEach(student => {
+                        const option = document.createElement('option');
+                        option.value = student.id;
+                        option.textContent = `${student.name} (${student.roll_no})`;
+                        manualSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading attendance:', error);
+            }
+        }
+
+        // Update lists
+        function updateLists(present, absent) {
+            // All students list
+            const allList = document.getElementById('allList');
+            const all = [...present, ...absent];
+            
+            if (all.length === 0) {
+                allList.innerHTML = '<div class="empty-list"><div class="empty-icon">👥</div><div>No students in this class</div></div>';
+            } else {
+                allList.innerHTML = all.map(student => `
+                    <div class="student-item ${present.includes(student) ? 'present' : 'absent'}">
+                        <div class="student-info-item">
+                            <div class="student-name-item">${student.name}</div>
+                            <div class="student-roll-item">📋 ${student.roll_no}</div>
+                            ${student.time ? `<div class="student-time">🕐 ${new Date(student.time).toLocaleTimeString()}</div>` : ''}
+                        </div>
+                        <div>
+                            <span class="badge ${present.includes(student) ? 'badge-present' : 'badge-absent'}">
+                                ${present.includes(student) ? '✅ Present' : '❌ Absent'}
+                            </span>
+                            ${student.method === 'facial_recognition' ? '<span class="badge badge-camera">📸 AI</span>' : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Present list
+            const presentList = document.getElementById('presentList');
+            if (present.length === 0) {
+                presentList.innerHTML = '<div class="empty-list"><div class="empty-icon">✅</div><div>No students marked present yet</div></div>';
+            } else {
+                presentList.innerHTML = present.map(student => `
+                    <div class="student-item present">
+                        <div class="student-info-item">
+                            <div class="student-name-item">${student.name}</div>
+                            <div class="student-roll-item">📋 ${student.roll_no}</div>
+                            ${student.time ? `<div class="student-time">🕐 ${new Date(student.time).toLocaleTimeString()}</div>` : ''}
+                        </div>
+                        <div>
+                            ${student.method === 'facial_recognition' ? '<span class="badge badge-camera">📸 AI</span>' : '<span class="badge" style="background: #f59e0b; color: white;">✋ Manual</span>'}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Absent list
+            const absentList = document.getElementById('absentList');
+            if (absent.length === 0) {
+                absentList.innerHTML = '<div class="empty-list"><div class="empty-icon">🎉</div><div>All students are present!</div></div>';
+            } else {
+                absentList.innerHTML = absent.map(student => `
+                    <div class="student-item absent">
+                        <div class="student-info-item">
+                            <div class="student-name-item">${student.name}</div>
+                            <div class="student-roll-item">📋 ${student.roll_no}</div>
+                        </div>
+                        <span class="badge badge-absent">❌ Absent</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Switch tabs
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + 'Tab').classList.add('active');
+        }
+
+        // Start camera
+        startBtn.addEventListener('click', async () => {
+            try {
+                // Initialize attendance
+                const initResponse = await fetch(`/api/attendance/start/${classId}`, {
+                    method: 'POST'
+                });
+                const initData = await initResponse.json();
+
+                if (!initData.success) {
+                    showNotification('Error', initData.error || 'Failed to start attendance', '❌');
+                    return;
+                }
+
+                // Start camera
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'user',
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                video.srcObject = stream;
+                placeholder.style.display = 'none';
+                video.style.display = 'block';
+                
+                startBtn.style.display = 'none';
+                stopBtn.style.display = 'inline-flex';
+                
+                statusDot.classList.add('active');
+                statusText.textContent = 'Camera Active - Scanning';
+                
+                detectionOverlay.classList.add('show');
+                
+                showNotification('Camera Started', 'AI facial recognition is now active', '📸');
+                
+                // Start processing frames
+                startProcessing();
+            } catch (error) {
+                console.error('Camera error:', error);
+                showNotification('Camera Error', 'Failed to access camera. Please check permissions.', '❌');
+            }
+        });
+
+        // Stop camera
+        stopBtn.addEventListener('click', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            
+            video.style.display = 'none';
+            placeholder.style.display = 'flex';
+            
+            stopBtn.style.display = 'none';
+            startBtn.style.display = 'inline-flex';
+            
+            statusDot.classList.remove('active');
+            statusText.textContent = 'Camera Off';
+            
+            detectionOverlay.classList.remove('show');
+            
+            stopProcessing();
+            
+            showNotification('Camera Stopped', 'Attendance session ended', '⏹️');
+        });
+
+        // Start processing frames
+        function startProcessing() {
+            processingInterval = setInterval(async () => {
+                if (!isProcessing && video.style.display === 'block') {
+                    await processFrame();
+                }
+            }, 2000); // Process every 2 seconds
+        }
+
+        // Stop processing
+        function stopProcessing() {
+            if (processingInterval) {
+                clearInterval(processingInterval);
+                processingInterval = null;
+            }
+        }
+
+        // Process frame
+        async function processFrame() {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            try {
+                // Capture frame
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
+                
+                const imageData = canvas.toDataURL('image/jpeg', 0.7);
+
+                // Send to server
+                const response = await fetch('/api/attendance/process-frame', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        class_id: classId,
+                        image: imageData
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.detected.length > 0) {
+                    // Show detection
+                    data.detected.forEach(student => {
+                        detectionText.textContent = `✅ Detected: ${student.name}`;
+                        detectionSubtext.textContent = `Roll: ${student.roll_no} | Confidence: ${student.confidence || 'High'}`;
+                        
+                        showNotification('Student Detected', `${student.name} marked present`, '✅');
+                    });
+
+                    // Reload attendance status
+                    await loadAttendanceStatus();
+                } else {
+                    detectionText.textContent = 'Scanning...';
+                    detectionSubtext.textContent = `Faces: ${data.faces_found || 0} | Recognized: 0`;
+                }
+
+                document.getElementById('processingCount').textContent = data.total_marked || 0;
+            } catch (error) {
+                console.error('Processing error:', error);
+            } finally {
+                isProcessing = false;
+            }
+        }
+
+        // Manual marking
+        manualMarkBtn.addEventListener('click', async () => {
+            const studentId = manualSelect.value;
+            if (!studentId) {
+                showNotification('Select Student', 'Please select a student first', '⚠️');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/attendance/manual', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        class_id: classId,
+                        student_id: studentId,
+                        status: 'present'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showNotification('Marked Present', 'Student marked present manually', '✅');
+                    manualSelect.value = '';
+                    await loadAttendanceStatus();
+                } else {
+                    showNotification('Error', data.error, '❌');
+                }
+            } catch (error) {
+                showNotification('Error', 'Failed to mark attendance', '❌');
+            }
+        });
+
+        // Initial load
+        loadAttendanceStatus();
+
+        // Refresh every 5 seconds
+        setInterval(loadAttendanceStatus, 5000);
+
+        // Cleanup
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            stopProcessing();
+        });
+    </script>
+</body>
+</html>
