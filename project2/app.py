@@ -1,7 +1,7 @@
 """
 Smart Attendance System - GLA University
 Google Solution Challenge 2026
-Team: Ctrl+Alt+Defeat
+Team: Consciousness 
 
 AI-Powered Facial Recognition Attendance System
 Features: Face Recognition, Real-time Attendance, Analytics, Gemini AI Insights
