@@ -1,4 +1,4 @@
-# 🎓 Smart Attendance System - AI-Powered Facial Recognition
+cugu# 🎓 Smart Attendance System - AI-Powered Facial Recognition
 
 > **Team Ctrl+Alt+Defeat** | GLA University, Mathura  
 > Revolutionizing attendance management with AI-powered facial recognition
