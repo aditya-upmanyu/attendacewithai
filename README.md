@@ -4,7 +4,7 @@ cugu# 🎓 Smart Attendance System - AI-Powered Facial Recognition
 > Revolutionizing attendance management with AI-powered facial recognition
 
 ---
-
+cff
 ## 🌟 **Overview**
 
 The **Smart Attendance System** is an innovative AI-powered solution designed to automate attendance tracking in educational institutions. Using cutting-edge facial recognition technology powered by Google Cloud services, our system eliminates manual attendance processes, prevents proxy attendance, and provides intelligent analytics for data-driven decision making[file:2].
